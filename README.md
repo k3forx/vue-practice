@@ -78,3 +78,34 @@ var vm = new Vue({
   }
 })
 ```
+
+## リストレンダリング
+
+### `v-for` で配列に要素をマッピングする
+
+```HTML
+<ul id="example-1">
+  <li v-for="item in items" :key="item.message">
+    {{ item.message }}
+  </li>
+</ul>
+```
+
+```JavaScript
+var example1 = new Vue({
+  el: '#example-1',
+  data: {
+    items: [
+      { message: 'Foo' },
+      { message: 'Bar' }
+    ]
+  }
+})
+```
+
+結果:
+
+```
+* Foo
+* Bar
+```
