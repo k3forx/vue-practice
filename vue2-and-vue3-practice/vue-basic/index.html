@@ -8,14 +8,40 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
   </head>
+
   <body>
-    <div id="app">{{ message }}</div>
+    <div id="app">
+      {{ message }}
+      <br />
+      <a :href="google">Link to Google</a>
+      <br />
+      <a :href="book.url">{{ book.title }}</a>
+
+      <!-- <img src="" alt="" target="" />
+      <input :name="" :value="" :placeholder="" />
+      <input
+        v-bind="{name: formInput.name, placeholder=formInput.placeholder"
+        }
+      /> -->
+      <br />
+      <input v-bind="formInput" />
+    </div>
+
     <script>
       let app = new Vue({
         el: "#app",
-        data: function () {
+        data() {
           return {
-            message: "Hello Vue!",
+            message: "Hello Vue!", // key:value
+            google: "https://www.google.com",
+            book: {
+              title: "title of book",
+              url: "https://www.google.com",
+            },
+            formInput: {
+              name: "your name",
+              placeholder: "Input your name",
+            },
           };
         },
       });
