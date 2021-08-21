@@ -112,7 +112,9 @@ var example1 = new Vue({
 
 - バブリングとキャプチャリング
 
-## API の違い
+## Vue の基礎
+
+### API の違い
 
 |                | `methods`          | `computed`                                                 | `watch`                                                              |
 | -------------- | ------------------ | ---------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -121,7 +123,7 @@ var example1 = new Vue({
 | キャッシュ     | キャッシュされない | キャッシュする                                             | キャッシュする                                                       |
 | 実行タイミング | 再描画の度に実行   | 特定 data 変更時、特定 data を元に派生したデータを使うとき | 特定 data 変更時、特定コールバック関数を実行、非同期処理 (Ajax など) |
 
-## `this` について
+### `this` について
 
 ```javascript
 // Following log shows window object
@@ -146,7 +148,7 @@ Like this...
 
 ![image](https://user-images.githubusercontent.com/45956169/130318654-c698b24d-d53a-4a74-b7f9-fdc97323f380.png)
 
-## リアクティブ について
+### リアクティブ について
 
 https://jp.vuejs.org/v2/guide/reactivity.html
 
@@ -169,6 +171,32 @@ let app = new Vue({
 });
 ```
 
-`message` には getterやsetterがつかない
+`message` には getter や setter がつかない
 
 ![image](https://user-images.githubusercontent.com/45956169/130337525-dd385810-d15b-4c0e-aa31-94845bd0922b.png)
+
+### created と mounted
+
+- `created`: `data`生成のタイミング (非同期通信でデータ取得したい場合)
+- `mounted`: DOM 生成のタイミング
+
+```JavaScript
+let app = new Vue({
+  el: "#app",
+  data() {
+    return {};
+  },
+  created() {
+    console.log("created");
+    console.log(this.$el);
+  },
+  mounted() {
+    console.log("mounted");
+    console.log(this.$el);
+  },
+});
+```
+
+![image](https://user-images.githubusercontent.com/45956169/130337606-8093cade-3cc4-419a-9fba-a83bb008de92.png)
+
+## Transition
