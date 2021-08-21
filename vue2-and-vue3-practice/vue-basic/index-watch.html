@@ -16,7 +16,38 @@
       let app = new Vue({
         el: "#app",
         data() {
-          return {};
+          return {
+            price: 1,
+            number: 1,
+            books: [
+              {
+                id: 1,
+                title: "title A",
+                author: "author A",
+                url: "https://google.com",
+              },
+              {
+                id: 2,
+                title: "title B",
+                author: "author B",
+                url: "https://google.com",
+              },
+              {
+                id: 3,
+                title: "title C",
+                author: "author C",
+                url: "https://google.com",
+              },
+            ],
+          };
+        },
+        watch: {
+          books: {
+            handler() {
+              console.log("books are changed");
+            },
+            deep: true,
+          },
         },
       });
     </script>
