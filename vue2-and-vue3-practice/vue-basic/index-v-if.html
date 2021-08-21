@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial" />
+
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <div v-if="isDisplay">v-if</div>
+      <div v-if="!isDisplay">v-not-if</div>
+
+      <div v-if="signal === 'red'">red</div>
+      <div v-else-if="signal === 'yellow'">yellow</div>
+      <div v-else-if="signal === 'blue'">blue</div>
+      <div v-else>None</div>
+    </div>
+
+    <script>
+      let app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            isDisplay: true,
+            signal: "red",
+          };
+        },
+      });
+    </script>
+  </body>
+</html>

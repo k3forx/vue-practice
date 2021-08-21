@@ -109,3 +109,5 @@ var example1 = new Vue({
 * Foo
 * Bar
 ```
+
+- バブリングとキャプチャリング

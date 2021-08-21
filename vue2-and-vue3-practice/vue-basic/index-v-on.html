@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial" />
+
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <button id="clickEvent" onclick="btnClicked()">Click Me</button>
+
+    <!-- Ajax -->
+    <form>
+      <!-- always reloaded!!!! -->
+      <button type="submit">Submit with reload</button>
+
+      <!-- need some action to prevent reload -->
+      <button id="prevent" type="submit">Submit without reload</button>
+    </form>
+
+    <div id="app">
+      <!-- <button v-on:click="btnClicked">Click Me in virtual DOM</button> -->
+      <button @click="btnClicked">Click Me in virtual DOM</button>
+      <button @click="btnClickedEvent">Click Me (event) in virtual DOM</button>
+      <button @click="btnClickedArgs(1, $event)">
+        Click Me (args) in virtual DOM
+      </button>
+    </div>
+
+    <script>
+      let app = new Vue({
+        el: "#app",
+        data() {
+          return {};
+        },
+
+        methods: {
+          btnClicked() {
+            console.log("clicked in virtual DOM");
+          },
+          btnClickedEvent(e) {
+            console.log(e);
+          },
+          btnClickedArgs(arg, e) {
+            console.log(arg, e);
+          },
+        },
+      });
+
+      function btnClicked() {
+        console.log("clicked!!!");
+      }
+
+      const clickEvent = document.getElementById("clickEvent");
+      clickEvent.addEventListener("click", (e) => {
+        console.log(e);
+      });
+
+      const prevent = document.getElementById("prevent");
+      prevent.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log(e);
+      });
+    </script>
+  </body>
+</html>
