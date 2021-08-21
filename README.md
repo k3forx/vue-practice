@@ -145,3 +145,30 @@ const objArrow = {
 Like this...
 
 ![image](https://user-images.githubusercontent.com/45956169/130318654-c698b24d-d53a-4a74-b7f9-fdc97323f380.png)
+
+## リアクティブ について
+
+https://jp.vuejs.org/v2/guide/reactivity.html
+
+- `data` 内に定義されたオブジェクトにはそれぞれ getter と setter が定義されている
+
+![image](https://user-images.githubusercontent.com/45956169/130337355-4b65c2ee-ec1a-4bd0-a448-4ffac86fb923.png)
+
+> Vue では、すでに作成されたインスタンスに対して新しいルートレベルのリアクティブなプロパティを動的に追加することはできません。しかしながら、`Vue.set(object, propertyName, value)` メソッドを使ってネストしたオブジェクトにリアクティブなプロパティを追加することができます:
+
+```JavaScript
+let app = new Vue({
+  el: "#app",
+  data() {
+    return {
+      reactiveTest: {
+        name: "test",
+      },
+    };
+  },
+});
+```
+
+`message` には getterやsetterがつかない
+
+![image](https://user-images.githubusercontent.com/45956169/130337525-dd385810-d15b-4c0e-aa31-94845bd0922b.png)
