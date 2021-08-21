@@ -10,15 +10,43 @@
   </head>
 
   <body>
-    <div id="app"></div>
+    <div id="app">{{ totalPrice }}</div>
 
     <script>
       let app = new Vue({
         el: "#app",
         data() {
-          return {};
+          return {
+            price: 1,
+            number: 1,
+          };
+        },
+        computed: {
+          // totalPrice() {
+          // return this.price * this.number;
+          // },
+
+          // Need to replace `this` with `app`, which is Vue instance
+          totalPrice: (app) => app.price * app.number,
         },
       });
+
+      // Following log shows window object
+      console.log(this);
+
+      // Following log shows "object" of `test` function
+      const obj = {
+        test: function () {
+          console.log(this);
+        },
+      };
+
+      // Following log shows window object
+      const objArrow = {
+        test: () => {
+          console.log(this);
+        },
+      };
     </script>
   </body>
 </html>

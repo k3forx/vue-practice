@@ -112,7 +112,7 @@ var example1 = new Vue({
 
 - バブリングとキャプチャリング
 
-API の違い
+## API の違い
 
 |                | `methods`          | `computed`                                                 | `watch`                                                              |
 | -------------- | ------------------ | ---------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -120,3 +120,28 @@ API の違い
 | 使い方         | 一般的な関数と同様 | return 内に特定したい data を含める `this.xxx`             | 特定したい data 名で作成、コールバック関数を含める                   |
 | キャッシュ     | キャッシュされない | キャッシュする                                             | キャッシュする                                                       |
 | 実行タイミング | 再描画の度に実行   | 特定 data 変更時、特定 data を元に派生したデータを使うとき | 特定 data 変更時、特定コールバック関数を実行、非同期処理 (Ajax など) |
+
+## `this` について
+
+```javascript
+// Following log shows window object
+console.log(this);
+
+// Following log shows "object" of `test` function
+const obj = {
+  test: function () {
+    console.log(this);
+  },
+};
+
+// Following log shows window object
+const objArrow = {
+  test: () => {
+    console.log(this);
+  },
+};
+```
+
+Like this...
+
+![image](https://user-images.githubusercontent.com/45956169/130318654-c698b24d-d53a-4a74-b7f9-fdc97323f380.png)
