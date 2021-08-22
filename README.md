@@ -4,7 +4,7 @@
 
 ### 1.4 Vue のインストール
 
-関数で返すように書く
+関数で返すようにデータをバインドするので、バリデーションに使ったりできる書く
 
 ```javascript
 ...
@@ -211,3 +211,16 @@ let app = new Vue({
 
 - `input` タグの `@input` は `input` イベントを `v-on` を用いて監視しているということ
   - https://developer.mozilla.org/ja/docs/Web/API/HTMLElement/input_event
+
+### `v-model`
+
+いくつか修飾子がある。例えば、`.lazy` はフォーカスが外れた時にデータをバインドするので、バリデーションに使ったりできる
+
+- https://jp.vuejs.org/v2/guide/forms.html#%E4%BF%AE%E9%A3%BE%E5%AD%90
+
+### フォームのイベント/オプション
+
+| タイミング | 送信ボタンクリック時            | リアルタイムフォーカスが外れた時   | リアルタイム (即時)                |
+| ---------- | ------------------------------- | ---------------------------------- | ---------------------------------- |
+| イベント   | `@click`, `@submit`, `.prevent` | `@change`, `@blur`, `v-model.lazy` | `@input`, `v-model` (`input` タグ) |
+| オプションAPI | `methods` | `computed`, `watch` | `computed`, `watch`|

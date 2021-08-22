@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Forms</title>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      [v-cloak]{
+        display: none;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app" v-cloak>
+      <p v-if="errors.length">
+        <ul>
+          <li class="error" v-for="error in errors">{{ error }}</li>
+        </ul>
+      </p>
+      <form @submit.prevent="validate">
+        Name
+        <input type="text" v-model="contact.yourName" />
+        <br />
+        Phone Number
+        <input type="tel" v-model.number="contact.tel" />
+        <br />
+        Email
+        <input type="email" v-model.lazy.trim="contact.email" />
+        <br />
+        Gender
+        <input type="radio" value="male" v-model="contact.gender" />Male
+        <input type="radio" value="female" v-model="contact.gender" />Female
+        <input type="radio" value="other" v-model="contact.gender" />Other
+        <br />
+        Age
+        <select v-model="contact.age">
+          <option disabled value="">select your age</option>
+          <option>10 ~ 20</option>
+          <option>20 ~ 30</option>
+          <option>30 ~ 40</option>
+          <option>40 ~</option>
+        </select>
+        <br />
+        Message
+        <textarea v-model="contact.message"></textarea>
+        <br />
+        Why do you know this site?
+        <input type="checkbox" value="website" v-model="contact.attracts" />Web
+        site
+        <input type="checkbox" value="paper" v-model="contact.attracts" />Paper
+        <input type="checkbox" value="other" v-model="contact.attracts" />Other
+        <br />
+        Agree the caution <input type="checkbox" v-model="contact.caution" />
+        <br />
+        <input type="submit" value="submit" />
+      </form>
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          contact: {
+            yourName: "",
+            tel: "",
+            email: "",
+            gender: "",
+            age: "",
+            message: "",
+            attracts: [],
+            caution: false,
+          },
+          errors: [],
+        };
+      },
+      methods: {
+        validate() {
+          this.errors = []
+          if (!this.contact.yourName){
+            this.errors.push("Need to put your name")
+          } else if (this.contact.yourName.length > 20) {
+            this.errors.push("name is too long")
+          }
+          if (!this.contact.gender){
+            this.errors.push("Need to select gender")
+          }
+          if (!this.contact.caution){
+            this.errors.push("Need to agree with the caution!!!")
+          }
+          if (!this.errors.length){
+            console.log("you can submit")
+          }
+        },
+      },
+    });
+  </script>
+</html>
