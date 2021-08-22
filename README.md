@@ -255,6 +255,20 @@ let app = new Vue({
 ```vue
 Vue.component("my-component", { template: `
 <div>aaa</div>
-` })
-let app = new Vue({})
+` }) let app = new Vue({})
+```
+
+### ローカルコンポーネント
+
+- 変数で作成
+- インスタンス内に components で追加する
+
+```vue
+let myComponent = {}
+
+let app = new Vue({
+  components: {
+    'my-component': myComponent
+  }
+})
 ```
