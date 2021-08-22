@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Forms</title>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+      ul {
+        list-style: none;
+      }
+      .done {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <input type="text" v-model="newItem" />
+      <button @click.prevent="addItem">Add</button>
+      <input v-model="query" />Search
+
+      <ul v-cloak>
+        <li v-for="(todo, index) in filteredList">
+          <input type="checkbox" v-model="todo.isDone" />
+          <span :class="{done: todo.isDone}">{{ todo.item }}</span>
+          <button @click="deleteItem(index)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          newItem: "",
+          todos: [],
+          query: "",
+        };
+      },
+      methods: {
+        addItem() {
+          if (!this.newItem) return;
+          const todo = {
+            item: this.newItem,
+            isDone: false,
+          };
+          this.todos.push(todo);
+          this.newItem = "";
+        },
+        deleteItem(index) {
+          this.todos.splice(index, 1);
+        },
+      },
+      computed: {
+        filteredList() {
+          let that = this;
+          return this.todos.filter((todo) => {
+            return todo.item.indexOf(that.query) !== -1;
+          });
+        },
+      },
+    });
+  </script>
+</html>
