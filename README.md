@@ -204,3 +204,10 @@ let app = new Vue({
 ### リストトランジション
 
 > 例えば、`v-for` のように同時に描画したいリストのアイテムがある場合はどうすればよいでしょう？この場合は、`<transition-group>` コンポーネントを使うことができます。
+
+## Form
+
+### `v-on` と `v-bind`
+
+- `input` タグの `@input` は `input` イベントを `v-on` を用いて監視しているということ
+  - https://developer.mozilla.org/ja/docs/Web/API/HTMLElement/input_event
