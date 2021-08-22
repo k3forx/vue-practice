@@ -200,3 +200,7 @@ let app = new Vue({
 ![image](https://user-images.githubusercontent.com/45956169/130337606-8093cade-3cc4-419a-9fba-a83bb008de92.png)
 
 ## Transition
+
+### リストトランジション
+
+> 例えば、`v-for` のように同時に描画したいリストのアイテムがある場合はどうすればよいでしょう？この場合は、`<transition-group>` コンポーネントを使うことができます。
