@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="app.css" />
+  </head>
+  <body>
+    <div id="app">
+      <button @click="show = !show">Toggle render</button>
+      <transition
+        enter-active-class="animate__animated animate__bounce"
+        leave-active-class="animate__animated animate__heartBeat"
+      >
+        <p v-if="show">hello</p>
+      </transition>
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          show: false,
+        };
+      },
+      methods: {},
+    });
+  </script>
+</html>
