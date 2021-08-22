@@ -241,3 +241,20 @@ let app = new Vue({
 | --- | --- | --- | --- |
 | イベント | `created`, `mounted` (`$nextTick`) | `@click`, `@submit` | `@input` |
 | オプション API | `methods` | `methods` | `watch` |
+
+## コンポーネント
+
+### グローバルコンポーネント
+
+お約束
+
+- インスタンス化の前に書く
+- template 内は ```
+- 単一ルートが必須 (`div`タグなど)
+
+```vue
+Vue.component("my-component", { template: `
+<div>aaa</div>
+` })
+let app = new Vue({})
+```
