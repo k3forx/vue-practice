@@ -264,11 +264,11 @@ Vue.component("my-component", { template: `
 - インスタンス内に components で追加する
 
 ```vue
-let myComponent = {}
-
-let app = new Vue({
-  components: {
-    'my-component': myComponent
-  }
-})
+let myComponent = {} let app = new Vue({ components: { 'my-component':
+myComponent } })
 ```
+
+### props
+
+- html の属性のようなもの
+- 基本的には親コンポーネントからの受け渡されるオブジェクトなので、子コンポーネントでは `data` に渡して使う
