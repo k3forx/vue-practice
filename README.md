@@ -275,3 +275,33 @@ myComponent } })
 
 - props 名はケバブケース
 - Type が Object か Array で default 設定を行うならば、関数で定義する
+
+### emit
+
+子のコンポーネント
+
+```javascript
+...
+<... @click="method_in_child" ...>
+...
+methods: {
+  method_in_child() {
+    this.$emit("custom-event", value)
+  }
+}
+...
+```
+
+親のコンポーネント
+
+```javascript
+...
+<... @custom-event="method_in_parent" ...>
+...
+methods: {
+  method_in_parent(e) {
+    console.log(e)
+  }
+}
+...
+```
