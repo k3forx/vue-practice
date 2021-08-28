@@ -21,13 +21,28 @@
     </style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app" class="parent">
+      <child-component class="child">aaaaaaa</child-component>
+      <child-component class="child"></child-component>
+      <child-component class="child">
+        <child-component class="child"></child-component>
+      </child-component>
+    </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
   <script>
+    let childComponent = {
+      template: `
+      <div>
+        kubo <slot>minami</slot> doan
+      </div>
+      `,
+    };
     let app = new Vue({
       el: "#app",
-      components: {},
+      components: {
+        childComponent,
+      },
       data() {
         return {};
       },
