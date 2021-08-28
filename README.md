@@ -309,3 +309,13 @@ methods: {
 ### eventbus
 
 - 子 <-> 子や親 <-> 孫同士でデータ連携をするには EventBus や Vuex などを用いる
+
+## Vuetify
+
+### Grid
+
+以下の grid は md 以上なら 4 つ分使用し、それ以下は 12 使うということを示している
+
+```JavaScript
+<v-col cols="12" md="4">
+```
