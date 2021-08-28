@@ -319,3 +319,22 @@ methods: {
 ```JavaScript
 <v-col cols="12" md="4">
 ```
+
+## Spacing
+
+- `m`: margin
+- `p`: padding
+- `t`op/`b`ottom/`l`eft/`r`ight
+- `x` (left and right)/`y` (top and bottom)/`a` (left, right, top, and bottom)
+
+size
+
+- 1: 4px (i.e. 5 -> 5\*4 = 20px)
+
+ex.)
+
+margin, top and bottom, 20px
+
+```javascript
+<div class="my-5">
+```
