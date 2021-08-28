@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+
+    <style>
+      .parent {
+        width: 800px;
+        margin: 0 auto;
+        border: 1px red solid;
+      }
+      .child {
+        width: 30%;
+        margin: 0 auto;
+        border: 1px blue solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="parent">
+      <my-com>
+        <template v-slot:default="player">
+          {{ player }} {{ player.member.name }}</template
+        >
+      </my-com>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+  <script>
+    let myCom = {
+      template: `
+      <div>
+        <slot :member="member">this will be replaced</slot>
+      </div>
+      `,
+      data() {
+        return {
+          member: {
+            name: "aaa",
+            height: 170,
+            hobby: "soccer",
+          },
+        };
+      },
+    };
+    let app = new Vue({
+      el: "#app",
+      components: {
+        myCom,
+      },
+      data() {
+        return {};
+      },
+    });
+  </script>
+</html>
