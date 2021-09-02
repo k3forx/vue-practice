@@ -338,3 +338,9 @@ margin, top and bottom, 20px
 ```javascript
 <div class="my-5">
 ```
+
+## Vue のインストール
+
+```bash
+npm -g
+```
