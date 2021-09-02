@@ -344,3 +344,14 @@ margin, top and bottom, 20px
 ```bash
 npm -g
 ```
+
+ファイル構成
+
+- `node_modules`: 各種ライブラリ
+- `dist`: コンパイル後のフォルダ
+- `public`: テンプレート
+- `src`: 開発フォルダ
+- `package.json`: npm の設定ファイル
+- `vue.config.js`: vue の設定ファイル
+
+`package.json` があれば、 `npm install` で `node_module` が生成される。
